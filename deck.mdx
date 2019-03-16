@@ -12,32 +12,25 @@ export { default as theme } from './theme'
 
 # Nuxt 101
 
-Nuxt: the framework to scale up universal Vue apps.
+Nuxt: the framework to scale up<br />universal Vue apps.
 
 ---
 
-WTF nuxt?
-
----
+Wait, what?
 
 A framework built on top of a framework?
 
 ---
 
-Vue --> "light framework" or UI library.
-
-Vue-cli --> Tooling for Vue projects.
-
-Nuxt --> Framework build on top of Vue.
-
-
----
-
-Nuxt = Vue on steroids
+|          |                                   |                            |
+|----------|-----------------------------------|----------------------------|
+| Vue      | 🤷           | `npm i vue`                |
+| Vue CLI  | Official tooling for Vue projects | `npm i -g @vue/cli`        |
+| Nuxt     | Framework built on top of Vue     | `npm i -g create-nuxt-app` |
 
 ---
 
-Nuxt or vue-cli?
+Nuxt or Vue CLI?
 
 ---
 
@@ -51,13 +44,31 @@ npx create-nuxt-app <app_name>
 
 ---
 
-# Main Nuxt feature
+# Universal mode
 
-Universal mode
+Reason #1 to use Nuxt
 
 ---
 
-¿? CSR vs SSR?
+SPA - Single Page App (CSR)
+
+SSR - Server Side Rendering
+
+PRA - Prerendered App
+
+---
+
+What does "build on top of Vue" mean?
+
+---
+
+<code>&lt;nuxt-link&gt;</code> replaces <code>&lt;router-link&gt;</code>
+<br />
+<br />
+<code>&lt;nuxt-child&gt;</code> replaces <code>&lt;router-view&gt;</code>
+<br />
+<br />
+<code>&lt;nuxt&gt;</code> replaces <code>&lt;router-view&gt;</code> (in Layouts)
 
 ---
 
@@ -91,16 +102,12 @@ pages/
 ```js
 export default {
   // Called every time before loading the component
-  // btw: `this` is not available here!
   asyncData (context) {
-    return {
-      // Object that will be merged with `data`
-    }
+    // Returns an object that will be merged with `data`
+    return {}
   },
 
-  // Configure meta tags (using vue-meta)
   head () { },
-
 
   validate () { },
 
@@ -117,9 +124,15 @@ Lets you handle async operations before setting the component data.
 ```js
 export default {
   // Called every time before loading the component
-  // btw: `this` is not available here!
   // Fills the store before rendering
-  fetch () { },
+  async fetch ({ store, params }) {
+    const { data } = await axios.get(`https://api.com/${params.id}`)
+
+    store.commit('AMAZE_COMMIT', data)
+
+
+    await store.dispatch('WOW_SUCH_ACTION')
+  }
 }
 ```
 
@@ -130,6 +143,7 @@ Layouts
 ```
 layouts/
   default.vue
+  full-screen.vue
 ```
 
 ```notes
@@ -138,12 +152,22 @@ Whether you want to include a sidebar or having distinct layouts for mobile and 
 
 ---
 
-```js
-// layout/custom.js
+```jsx
+// layout/default.vue
 
 <template>
   <div>
     <app-header />
+    <nuxt />
+  </div>
+</template>
+```
+
+```jsx
+// layout/full-screen.vue
+
+<template>
+  <div class="full-height">
     <nuxt />
   </div>
 </template>
@@ -155,7 +179,7 @@ Whether you want to include a sidebar or having distinct layouts for mobile and 
 // random page
 
 export default {
-  layout: 'custom',
+  layout: 'full-screen',
 }
 ```
 
@@ -183,7 +207,39 @@ store/
 
 ---
 
-### Cool stuff
+## Middlewares
+
+```notes
+Funciones que se ejecutan justo antes de entrar en alguna ruta.
+```
+
+---
+
+Auth (login + permissions)
+
+Updating the store
+
+---
+
+## Modules
+
+---
+
+```js
+// nuxt.config.js
+
+{
+  modules: [
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-12301-2'
+    }]
+  ]
+}
+```
+
+---
+
+## Collocating routes and files
 
 ---
 
@@ -255,4 +311,16 @@ store/*.test.*
 
 ---
 
-asd
+## Route prefetching
+
+```notes
+https://nuxt-prefetch.surge.sh/
+```
+
+---
+
+## Nuxt + Sass
+
+---
+
+(example nuxt+sass)
