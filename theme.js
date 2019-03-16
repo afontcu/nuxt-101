@@ -28,7 +28,9 @@ export default {
     pre: {
       borderRadius: '8px',
       boxShadow: '2px 4px 10px rgba(0, 0, 0, 0.3)',
+      textShadow: 'none',    
     },
+    textShadow: '4px 3px 8px rgba(0, 0, 0, 0.2)',    
   },
   //   textAlign: 'left',
   //   blockquote: {
