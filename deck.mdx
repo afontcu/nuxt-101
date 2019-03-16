@@ -9,3 +9,250 @@ export { default as theme } from './theme'
 </Head>
 
 ---
+
+# Nuxt 101
+
+Nuxt: the framework to scale up universal Vue apps.
+
+---
+
+WTF nuxt?
+
+---
+
+A framework built on top of a framework?
+
+---
+
+Vue --> "light framework" or UI library.
+
+Vue-cli --> Tooling for Vue projects.
+
+Nuxt --> Framework build on top of Vue.
+
+
+---
+
+Nuxt = Vue on steroids
+
+---
+
+Nuxt or vue-cli?
+
+---
+
+# How to get started?
+
+---
+
+```bash
+npx create-nuxt-app <app_name>
+```
+
+---
+
+# Main Nuxt feature
+
+Universal mode
+
+---
+
+¿? CSR vs SSR?
+
+---
+
+# Other cool Nuxt features
+
+---
+
+## "Magic" folders
+
+Convention over configuration
+
+---
+
+Pages
+
+```js
+pages/
+  page.vue        // app.com/page
+  users/       
+    index.vue     // app.com/users
+    _id.vue       // app.com/users/{id}
+  posts/
+    index.vue     // app.com/posts
+    _id/
+      index.vue   // app.com/posts/{id}
+      details.vue // app.com/posts/{id}/details
+```
+
+---
+
+```js
+export default {
+  // Called every time before loading the component
+  // btw: `this` is not available here!
+  asyncData (context) {
+    return {
+      // Object that will be merged with `data`
+    }
+  },
+
+  // Configure meta tags (using vue-meta)
+  head () { },
+
+
+  validate () { },
+
+  ...
+}
+```
+
+```notes
+Lets you handle async operations before setting the component data.
+```
+
+---
+
+```js
+export default {
+  // Called every time before loading the component
+  // btw: `this` is not available here!
+  // Fills the store before rendering
+  fetch () { },
+}
+```
+
+---
+
+Layouts
+
+```
+layouts/
+  default.vue
+```
+
+```notes
+Whether you want to include a sidebar or having distinct layouts for mobile and desktop.
+```
+
+---
+
+```js
+// layout/custom.js
+
+<template>
+  <div>
+    <app-header />
+    <nuxt />
+  </div>
+</template>
+```
+
+---
+
+```js
+// random page
+
+export default {
+  layout: 'custom',
+}
+```
+
+---
+
+Store
+
+```
+store/
+  user.js
+  language.js
+  posts/
+    index.js  <-- Loads other post files
+    state.js
+    getters.js
+    mutations.js
+    actions.js 
+```
+
+```notes
+1. Automagically imports Vuex
+2. Adds `store` option to the Vue root instance
+3. Each file is transformed to a namespaced module (state, rootState)
+```
+
+---
+
+### Cool stuff
+
+---
+
+```
+pages/
+  contracts/
+    index.vue
+    components/
+    store/
+    tests/
+    services/              
+```
+
+---
+
+```
+pages/
+  contracts/
+    index.vue
+    components/   <- I
+    store/        <- DON'T
+    tests/        <- WANT
+    services/     <- ROUTES
+```
+
+---
+
+```
+pages/
+  contracts/
+    index.vue
+    -components/
+    -store/
+    -tests/
+    -services/
+```
+
+```notes
+DEPRECATED
+
+"ignore" en nuxt.config.js
+
+"ignorePrefix"
+```
+
+---
+
+```js
+.nuxtignore
+```
+
+---
+
+```bash
+# ignore layout foo.vue
+layouts/foo.vue
+
+# ignore layout files whose name ends with -ignore.vue
+layouts/*-ignore.vue
+
+# ignore files inside /custom folders
+pages/**/components/*
+pages/**/store/*
+pages/**/services/*
+
+# ignore store files match *.test.*
+store/*.test.*
+```
+
+---
+
+asd
