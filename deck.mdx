@@ -192,7 +192,7 @@ store/
   user.js
   language.js
   posts/
-    index.js  <-- Loads other post files
+    index.js  <-- Loads the other files
     state.js
     getters.js
     mutations.js
@@ -369,13 +369,15 @@ https://github.com/nuxt-community/style-resources-module
 ```js
 // nuxt.config.js
 
-modules: [
-  '@nuxtjs/style-resources',
-],
-
-styleResources: {
-  scss: [
-    '@assets/autoload.scss',
+{
+  modules: [
+    '@nuxtjs/style-resources',
   ],
-},
+
+  styleResources: {
+    scss: [
+      '@assets/autoload.scss',
+    ],
+  },
+}
 ```
