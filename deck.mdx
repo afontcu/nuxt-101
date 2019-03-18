@@ -1,4 +1,4 @@
-import { Image, Head, Appear, Split } from 'mdx-deck'
+import { Image, Head } from 'mdx-deck'
 import { Invert } from 'mdx-deck/layouts'
 
 export { default as theme } from './theme'
@@ -211,6 +211,9 @@ store/
 
 ```notes
 Funciones que se ejecutan justo antes de entrar en alguna ruta.
+
+comptador de visites?
+setejar info al contexto de tota l'aplicació
 ```
 
 ---
@@ -231,10 +234,16 @@ Updating the store
 {
   modules: [
     ['@nuxtjs/google-analytics', {
-      id: 'UA-12301-2'
-    }]
-  ]
+      id: 'UA-12345-1',
+    }],
+  ],
 }
+```
+
+```notes
+Feed RSS
+Sitemap
+PWA
 ```
 
 ---
@@ -287,9 +296,7 @@ DEPRECATED
 
 ---
 
-```js
-.nuxtignore
-```
+<code>.nuxtignore</code>
 
 ---
 
@@ -307,6 +314,25 @@ pages/**/services/*
 
 # ignore store files match *.test.*
 store/*.test.*
+```
+
+---
+
+(v2.5)
+
+---
+
+```js
+export default {
+  ignorePrefix: '+',
+
+  ignore: [
+    '**/components/**',
+    '**/store/**',
+    '**/service/**',
+    '**/test/**',
+  ],
+}
 ```
 
 ---
