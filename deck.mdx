@@ -1,6 +1,8 @@
 import { Image, Head } from 'mdx-deck'
 import { Invert } from 'mdx-deck/layouts'
 
+import Black from './Black'
+
 export { default as theme } from './theme'
 
 
@@ -16,9 +18,49 @@ Nuxt: the framework to scale up<br />universal Vue apps.
 
 ---
 
+# Adrià Fontcuberta
+@afontcu_
+
+Software Engineer at Holaluz (👋💡)
+
+---
+
+# Adrià Fontcuberta
+@afontcu_
+
+Frontend Developer at Holaluz (👋💡)
+
+---
+
+# Adrià Fontcuberta
+@afontcu_
+
+UI Engineer at Holaluz (👋💡)
+
+---
+
+# Adrià Fontcuberta
+@afontcu_
+
+Webmaster at Holaluz (👋💡)
+
+---
+
+# Nuxt 101
+
+Nuxt: the framework to scale up<br />universal Vue apps.
+
+---
+
 Wait, what?
 
 A framework built on top of a framework?
+
+---
+
+export default Black
+
+<Image src="images/meme.jpg" size="contain" />
 
 ---
 
@@ -69,6 +111,8 @@ What does "build on top of Vue" mean?
 <br />
 <br />
 <code>&lt;nuxt&gt;</code> replaces <code>&lt;router-view&gt;</code> (in Layouts)
+
+...
 
 ---
 
@@ -339,9 +383,9 @@ export default {
 
 ## Route prefetching
 
-```notes
-https://nuxt-prefetch.surge.sh/
+[Demo](https://nuxt-prefetch.surge.sh/)
 
+```notes
 nuxt-link: Ventajas de usar un framework
 ```
 
@@ -349,18 +393,17 @@ nuxt-link: Ventajas de usar un framework
 
 ## Nuxt + globally accessible Sass
 
-```notes
-npm i -D node-sass sass-loader 
-welcome to JS
-```
-
 ---
 
 ```bash
+npm install -D sass-loader node-sass
+
 npm install -D @nuxtjs/style-resources
 ```
 
 ```notes
+welcome to JS
+
 https://github.com/nuxt-community/style-resources-module
 ```
 
@@ -376,8 +419,45 @@ https://github.com/nuxt-community/style-resources-module
 
   styleResources: {
     scss: [
-      '@assets/autoload.scss',
+      '~assets/autoload.scss',
     ],
   },
 }
 ```
+
+---
+
+There's a lot more!
+
+---
+
+TypeScript support
+
+Page loading transitions
+
+SEO HTML `<head>`
+
+Custom modules + commands
+
+...
+
+---
+
+[nuxtjs.org](https://nuxtjs.org)
+
+---
+
+
+# Thanks! 👋
+
+[@afontcu_](https://twitter.com/afontcu_)
+
+```bash
+npx afontcu
+```
+
+---
+
+😏 btw, we might be hiring! 😏
+
+<small>are you interested? DM me @afontcu_</small>
