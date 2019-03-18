@@ -341,12 +341,41 @@ export default {
 
 ```notes
 https://nuxt-prefetch.surge.sh/
+
+nuxt-link: Ventajas de usar un framework
 ```
 
 ---
 
-## Nuxt + Sass
+## Nuxt + globally accessible Sass
+
+```notes
+npm i -D node-sass sass-loader 
+welcome to JS
+```
 
 ---
 
-(example nuxt+sass)
+```bash
+npm install -D @nuxtjs/style-resources
+```
+
+```notes
+https://github.com/nuxt-community/style-resources-module
+```
+
+---
+
+```js
+// nuxt.config.js
+
+modules: [
+  '@nuxtjs/style-resources',
+],
+
+styleResources: {
+  scss: [
+    '@assets/autoload.scss',
+  ],
+},
+```
