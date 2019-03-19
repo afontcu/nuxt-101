@@ -72,17 +72,7 @@ export default Black
 
 ---
 
-Nuxt or Vue CLI?
-
----
-
-# How to get started?
-
----
-
-```bash
-npx create-nuxt-app <app_name>
-```
+## Nuxt or Vue CLI?
 
 ---
 
@@ -96,7 +86,7 @@ SPA - Single Page App (CSR)
 
 SSR - Server Side Rendering
 
-PRA - Prerendered App
+SGA - Static Generated App (Prerender)
 
 ---
 
@@ -116,11 +106,15 @@ What does "build on top of Vue" mean?
 
 ---
 
-# Other cool Nuxt features
+export default Invert
+
+<Image src="images/nuxt-schema.svg" size="contain" />
 
 ---
 
-## "Magic" folders
+# Magic folders
+
+Reason #2 to use Nuxt
 
 Convention over configuration
 
@@ -146,15 +140,16 @@ pages/
 ```js
 export default {
   // Called every time before loading the component
-  asyncData (context) {
+  async asyncData ({ params }) {
+    const someStuff = await axios.get(`https://api.com/${params.id}`)
+
     // Returns an object that will be merged with `data`
-    return {}
+    return { someStuff }
   },
 
   head () { },
 
   validate () { },
-
   ...
 }
 ```
@@ -172,10 +167,8 @@ export default {
   async fetch ({ store, params }) {
     const { data } = await axios.get(`https://api.com/${params.id}`)
 
-    store.commit('AMAZE_COMMIT', data)
-
-
     await store.dispatch('WOW_SUCH_ACTION')
+    store.commit('AMAZE_COMMIT', data)
   }
 }
 ```
@@ -292,6 +285,17 @@ PWA
 
 ---
 
+export default Invert
+
+<Image src="images/nuxt-schema.svg" size="contain" />
+
+---
+
+
+# Other cool stuff
+
+---
+
 ## Collocating routes and files
 
 ---
@@ -363,6 +367,8 @@ store/*.test.*
 ---
 
 (v2.5)
+
+`nuxt-edge`
 
 ---
 

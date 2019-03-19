@@ -19,7 +19,7 @@ export default {
   },
   css: {
     backgroundImage: 'linear-gradient(90deg, #e6007d 0, #f8a022)',
-    fontSize: '2rem',
+    fontSize: '2.1rem',
     'table td': {
       padding: '1rem',
     },
