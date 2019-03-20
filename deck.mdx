@@ -16,6 +16,11 @@ export { default as theme } from './theme'
 
 Nuxt: the framework to scale up<br />universal Vue apps.
 
+```notes
+cuánta gente usa vue
+cuánta gente usa nuxt
+```
+
 ---
 
 # Adrià Fontcuberta
@@ -64,11 +69,11 @@ export default Black
 
 ---
 
-|          |                                   |                            |
-|----------|-----------------------------------|----------------------------|
-| Vue      | 🤷           | `npm i vue`                |
-| Vue CLI  | Official tooling for Vue projects | `npm i -g @vue/cli`        |
-| Nuxt     | Framework built on top of Vue     | `npm i -g create-nuxt-app` |
+|          | |                            |
+|----------|-|----------------------------|
+| Vue      | | `npm i vue`                |
+| Vue CLI  | | `npm i -g @vue/cli`        |
+| Nuxt     | | `npm i -g create-nuxt-app` |
 
 ---
 
@@ -87,6 +92,11 @@ SPA - Single Page App (CSR)
 SSR - Server Side Rendering
 
 SGA - Static Generated App (Prerender)
+
+
+```notes
+SEO
+```
 
 ---
 
@@ -128,8 +138,16 @@ pages/
   users/       
     index.vue     // app.com/users
     _id.vue       // app.com/users/{id}
+```
+---
+
+Pages
+
+```js
+pages/
   posts/
     index.vue     // app.com/posts
+    latest.vue    // app.com/posts/latest
     _id/
       index.vue   // app.com/posts/{id}
       details.vue // app.com/posts/{id}/details
@@ -244,7 +262,7 @@ store/
 
 ---
 
-## Middlewares
+## Middleware
 
 ```notes
 Funciones que se ejecutan justo antes de entrar en alguna ruta.
@@ -255,9 +273,29 @@ setejar info al contexto de tota l'aplicació
 
 ---
 
-Auth (login + permissions)
+```js
+// middleware/auth.js
+// it becomes the 'auth' middleware
 
+export default function ({ store, redirect }) {
+  if (store.state.user.loggedIn) {
+    return redirect('/')
+  }
+}
+```
+
+```js
+// some page (or layout, or nuxt.config.js...)
+
+export default {
+  middleware: [ 'auth' ],
+}
+```
+
+```notes
 Updating the store
+Setting some global value related to visit (userAgent?)
+```
 
 ---
 
@@ -324,27 +362,9 @@ pages/
 
 ---
 
-```
-pages/
-  contracts/
-    index.vue
-    -components/
-    -store/
-    -tests/
-    -services/
-```
-
-```notes
-DEPRECATED
-
-"ignore" en nuxt.config.js
-
-"ignorePrefix"
-```
-
----
-
 <code>.nuxtignore</code>
+
+(v2.5 o `nuxt-edge`)
 
 ---
 
@@ -366,16 +386,10 @@ store/*.test.*
 
 ---
 
-(v2.5)
-
-`nuxt-edge`
-
----
-
 ```js
-export default {
-  ignorePrefix: '+',
+// nuxt.config.js
 
+export default {
   ignore: [
     '**/components/**',
     '**/store/**',
@@ -419,6 +433,10 @@ https://github.com/nuxt-community/style-resources-module
 // nuxt.config.js
 
 {
+  css: [
+    '~assets/main'
+  ],
+
   modules: [
     '@nuxtjs/style-resources',
   ],
@@ -474,9 +492,13 @@ Custom modules + commands
 ---
 
 
-# Thanks! 👋
+## Thanks! 👋
 
-[@afontcu_](https://twitter.com/afontcu_)
+<br />
+<div>Twitter: @afontcu_</div>
+<br />
+<div>Slides: https://nuxt-101.now.sh</div>
+<br />
 
 ```bash
 npx afontcu
